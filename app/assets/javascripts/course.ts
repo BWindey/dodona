@@ -4,6 +4,7 @@ import { ScrollSpy } from "./scrollspy";
 import { html, render } from "lit";
 import { Modal } from "bootstrap";
 import { searchQueryState } from "state/SearchQuery";
+import { i18n } from "i18n/i18n";
 
 function loadUsers(_status = undefined): void {
     const status = _status || getURLParameter("status");
@@ -12,65 +13,8 @@ function loadUsers(_status = undefined): void {
 
 function initCourseMembers(): void {
     function init(): void {
-        initUserTabs();
         initLabelsEditModal();
     }
-
-    function initUserTabs(): void {
-        const userTabs = document.getElementById("user-tabs");
-        if (userTabs === null) {
-            return;
-        }
-
-        const baseUrl = userTabs.dataset.baseurl;
-        // Select tab and load users
-        const selectTab = (tab): HTMLElement => {
-            const kebab = document.getElementById("kebab-menu");
-            const status = tab.dataset.status;
-            const kebabItems = kebab.querySelectorAll<HTMLElement>("li a.action");
-            let anyShown = false;
-            for (const item of kebabItems) {
-                const dataType = item.dataset.type;
-                if (dataType && dataType !== status) {
-                    hideElement(item);
-                } else {
-                    showElement(item);
-                    anyShown = true;
-                }
-            }
-            if (anyShown) {
-                showElement(kebab);
-            } else {
-                hideElement(kebab);
-            }
-            if (tab.parentNode.classList.contains("active")) {
-                // The current tab is already loaded, nothing to do
-                return;
-            }
-
-            loadUsers(status);
-            document.querySelector("#user-tabs li.active").classList.remove("active");
-            tab.parentNode.classList.add("active");
-        };
-
-        // Switch to clicked tab
-        document.querySelectorAll("#user-tabs li a")
-            .forEach(el => {
-                el.addEventListener("click", function (e) {
-                    selectTab(el);
-                    e.preventDefault();
-                });
-            });
-
-        // Determine which tab to show first
-        const status = searchQueryState.queryParams.get("status");
-        let tab = document.querySelector("a[data-status='" + status + "']");
-        if (tab === null) {
-            tab = document.querySelector("a[data-status='enrolled']");
-        }
-        selectTab(tab);
-    }
-
     function initLabelsEditModal(): void {
         document.getElementById("labelsUploadButton").addEventListener("click", () => {
             const modal = document.getElementById("labelsUploadModal");
@@ -98,18 +42,8 @@ function initCourseMembers(): void {
         });
     }
 
-    function hideElement(element: HTMLElement): void {
-        element.style.display = "none";
-    }
-
-    function showElement(element: HTMLElement): void {
-        element.style.display = "block";
-    }
-
     init();
 }
-
-const ICON_SELECTOR = ".series-icon";
 
 class Series {
     public readonly id: number;
@@ -223,7 +157,7 @@ function initCourseForm(): void {
                 registrationForInstitution.disabled = true;
                 document.querySelectorAll(".fill-institution")
                     .forEach(el => {
-                        el.innerHTML = I18n.t("js.configured-institution");
+                        el.innerHTML = i18n.t("js.configured-institution");
                     });
             } else {
                 visibleForInstitution.removeAttribute("disabled");
