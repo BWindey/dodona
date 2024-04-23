@@ -10,6 +10,11 @@
 }
 
 .feedback-table {
+  .tab-pane {
+    // Offset for the navbar and the tab bar
+    scroll-margin-top: calc(var(--d-navbar-height) + 50px);
+  }
+
   .tab-summary {
     flex-grow: 1;
     display: flex;
@@ -539,4 +544,10 @@ iframe.file {
 .scores.card .card-title.card-title-colored-container .btn {
   margin-top: -12px;
   margin-bottom: -12px;
+}
+
+.demo-mode {
+  .message-zeus {
+    display: none;
+  }
 }
