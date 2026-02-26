@@ -5,6 +5,12 @@
 ![Codecov](https://img.shields.io/codecov/c/github/dodona-edu/dodona)
 [![Support chat](https://img.shields.io/static/v1?label=support%20chat&message=on%20slack&color=informational)](https://join.slack.com/t/dodona-edu/shared_invite/zt-24o2an3bp-fFR_TTM0fB_kmlCvkS2ckA)
 
+> [!WARNING]
+> This repository was a fork of the Dodona repository by [the Dodona team](https://github.com/Dodona-edu).
+> Their main repository was silently privated.
+> This "fork" will remain available here forever, but will not get updates.
+
+
 > Dodona is an online exercise platform for **learning to code**. It wants to teach students how to program in the most meaningful and effective way possible. Dodona acts as an **online co-teacher**, designed to give every student access to high quality education. The focus is on automatic corrections and giving **meaningful feedback** on the submitted solutions from students.
 
 This repository contains the source code of the web application. If you simply want to use Dodona, please go to [https://dodona.be](https://dodona.be).
@@ -13,9 +19,15 @@ The documentation for end users can be found at [https://docs.dodona.be](https:/
 
 ## Supporting Dodona
 
+> [!NOTE]
+> This bit is incorrect nowadays but I'm leaving this up, just inserting this note to clarify.
+
 Dodona is free to use for schools and we would like to keep it that way! Keeping this platform up and running takes a lot of time, just as supporting hundreds of schools and thousands of students. If you would like to fund Dodona, you can find more information on [https://dodona.be/en/support-us/](https://dodona.be/en/support-us/) or get in touch by emailing us at dodona@ugent.be.
 
 ## Contacting us
+
+> [!NOTE]
+> The github links will not work because the main repo is private, the email should still work I think.
 
 There are several ways to contact us:
 - To report a bug, please use [GitHub Issues](https://github.com/dodona-edu/dodona/issues).
